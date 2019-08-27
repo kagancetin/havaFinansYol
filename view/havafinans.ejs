@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Hava Finans</title>
+	<link rel="stylesheet" href="/stylesheets/bootstrap.css">
+	<link href="https://fonts.googleapis.com/css?family=Barlow&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/stylesheets/style.css">
+	<link rel="stylesheet" href="/stylesheets/date.css">
+	<link rel="stylesheet" href="/stylesheets/havaFinans.css">
+</head>
+
+<body>
+	<!-- Tarih Saat  -->
+	<div class="dateMain">
+		<div class="mainHour" id="clock"></div>
+		<div class="mainDay" id="day"></div>
+		<div class="mainDate" id="date"></div>
+	</div>
+	<div class="botMain">
+
+		<!-- HavaFinans Hava  -->
+		<div class="leftMain">
+			<div class="headerContent">
+				<h1>Hava Durumu</h1>
+			</div>
+			<!-- Hava  -->
+			<div class="havaMain">
+				<div class="havaImg havaImgL">
+					<img id="gif" src="<%= daysWeather.fiveDay[0].gif %>" alt="">
+					<div class="havaContent">
+						<h1 id="name"><%= daysWeather.name %></h1>
+						<h3 id="temp"><%= daysWeather.fiveDay[0].temp %></h3>
+						<h3 id="weather"><%= daysWeather.fiveDay[0].weather %></h3>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- HavaFinans Finans  -->
+		<div class="rightMain">
+			<div class="headerContent">
+				<h1>Finans</h1>
+			</div>
+			<!-- Finans Satışlı  -->
+			<div class="financeMain">
+
+				<div>
+					<img class="icon-turn" style='height:80px;margin-top:-7px;' src="/images/usd.svg" alt=""> USD
+					<span>
+						<strong class="<%-finans[0].status_bg_color %>"><%- finans[0].status_symbol %></strong>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<%- finans[0].selling.toString().substring(0, finans[0].selling.toString().length - 2) %> ₺
+					</span>
+
+				</div>
+				<div><img class="icon-turn2" style='height:80px;margin-top:-7px;' src="/images/eur.svg" alt=""> EUR
+					<span>
+						<strong class="<%-finans[1].status_bg_color %>"><%- finans[1].status_symbol %></strong>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<%- finans[1].selling.toString().substring(0, finans[1].selling.toString().length - 2) %> ₺
+					</span>
+				</div>
+				<div><img class="icon-turn3" style='height:80px;margin-top:-7px;' src="/images/gbp.svg" alt=""> GBP
+					<span>
+						<strong class="<%-finans[2].status_bg_color %>"><%- finans[2].status_symbol %></strong>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<%- finans[2].selling.toString().substring(0, finans[2].selling.toString().length - 2) %> ₺
+					</span>
+				</div>
+				<div><img class="icon-turn4" style='height:80px;margin-top:-7px;' src="/images/gold.jpg" alt=""> Altın
+					<span>
+						<strong class="<%-finans[3].status_bg_color %>"><%- finans[3].status_symbol %></strong>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<%- finans[3].selling.toString().substring(0, finans[3].selling.toString().length - 9) %> ₺
+					</span>
+				</div>
+
+			</div>
+		</div>
+
+
+
+
+
+
+		<script src="/javascripts/jquery.js"></script>
+
+		<!-- Popper JS -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+		<!-- Latest compiled JavaScript -->
+		<script src="/javascripts/bootstrap.js"></script>
+
+		<script src="/javascripts/havafinans.js"></script>
+		<script src="/javascripts/date.js"></script>
+
+</body>
+
+</html>

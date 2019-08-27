@@ -1,0 +1,33 @@
+body{
+    background-image: url("/images/finans.png");
+    color: #fff;
+}
+.financeMain{
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 80px;
+	font-family: 'Barlow', sans-serif;
+    text-align: center;
+}
+
+.financeMain th{
+    font-family: SamsungSharpSansBold;
+    color: #fff;
+}
+
+.financeMain thead{
+    border-bottom: 2px solid #00366d;
+}
+
+.financeMain table{
+    border-bottom: 2px solid #00366d;
+}
+
+.financeMain td{
+    font-family: 'Barlow', sans-serif;
+    color: #fff;
+}

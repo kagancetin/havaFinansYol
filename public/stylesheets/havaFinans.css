@@ -1,0 +1,155 @@
+body{
+    background-color:black;
+    color: #fff;
+	
+}
+
+
+.botMain{
+	 height: 70vh;
+	display: flex;
+    justify-content: space-around;
+}
+.headerContent{
+	width:100%;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+	margin-bottom:50px;
+	z-index:100;
+	
+}
+
+.dateMain {
+	font-family: 'Barlow', sans-serif;
+}
+
+.headerContent h1{
+	font-family: 'Barlow', sans-serif;
+	font-weight: bolder;
+	font-size: 55px;
+}
+
+.botbotMain{
+display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.havaMain{
+    width: 40vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow', sans-serif !important;
+}
+.havaContent{
+	margin-top: -100px;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+	flex-direction: column;
+}
+
+.havaImgL{
+    height: 100%;
+}
+
+.havaImg{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	flex-direction: column;
+	
+}
+
+.havaImg img {
+    height: 700px;
+    margin-top: -200px;
+    z-index: -1;
+}
+
+.havaImgL h1 {
+	font-family: 'Barlow', sans-serif;
+	font-weight: bolder;
+    font-size:50px;
+    margin-bottom: 10px;
+	margin-top:-70px;
+}
+.havaImgL h3 {
+    font-size:40px;
+    margin-bottom: 5px;
+}
+
+
+
+/*     Finans      */
+
+.leftMain{
+	margin-left: -55px;
+}
+
+.financeMain{
+    width: 40vw;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 40px;
+    font-family: 'Barlow', sans-serif;
+    flex-direction: column;
+}
+
+
+
+.financeMain div{
+    font-family: 'Barlow', sans-serif;
+    color: #fff;
+	font-size: 50px;
+	margin:30px;
+}
+
+.financeMain div img{
+	margin-right:30px;
+}
+.financeMain div span{
+	margin-left:50px;
+	width:300px;
+	float:right;
+	font-family: 'Barlow', sans-serif;
+}
+
+/*
+.icon-turn {
+		-webkit-animation: rotation 4s infinite linear;
+		animation: rotation 4s infinite linear;
+}
+.icon-turn2 {
+		-webkit-animation: rotation 5s infinite linear;
+		animation: rotation 5s infinite linear;
+}
+.icon-turn3 {
+		-webkit-animation: rotation 4.5s infinite linear;
+		animation: rotation 4.5s infinite linear;
+}
+.icon-turn4 {
+		-webkit-animation: rotation 5.5s infinite linear;
+		animation: rotation 5.5s infinite linear;
+}
+
+
+@-webkit-keyframes rotation {
+		from {
+				-webkit-transform: rotateY(0)
+		}
+		to {
+				-webkit-transform: rotateY(359deg);
+		}
+}
+
+@keyframes rotation {
+		from {
+				-webkit-transform: rotateY(0)
+		}
+		to {
+				-webkit-transform: rotateY(359deg);
+		}
+}*/

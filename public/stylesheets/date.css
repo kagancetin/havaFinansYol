@@ -1,0 +1,23 @@
+.dateMain{
+    width: 100vw;
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+	 flex-direction: column;
+	 font-family: 'Barlow', sans-serif;
+}
+.dateMain div{
+    display: block;
+}
+
+.mainDate{
+	font-size:50px;
+}
+.mainDay{
+	font-size:50px;
+}
+.mainHour{
+	font-size:140px;
+}
