@@ -1,0 +1,124 @@
+html,
+body {
+    height: 1080px;
+    width: 1920px;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    font-family: 'Barlow', sans-serif;
+    color: antiquewhite;
+}
+
+.other-weather {
+    border-left: 2px solid #fdfdfd;
+}
+
+.main-header {
+    padding: 100px 50px 0px 50px;
+    width: 100%;
+    height: 25vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-header-part {
+    text-align: center;
+    width: 50%;
+}
+
+.main-header-part h3 {
+    font-size: 70px;
+}
+
+.main-body {
+    height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 150px;
+}
+
+.main-body-part {
+    width: 50%;
+}
+
+.main-body-part img {
+    width: 100%;
+}
+
+.main-body-part h1 {
+    font-size: 60px;
+    margin: 40px;
+}
+
+.main-body-part h3 {
+    font-size: 50px;
+    margin: 40px;
+}
+
+.row {
+    margin: 0;
+    padding: 0;
+}
+
+.col-sm-8 {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    list-style-position: none;
+}
+
+.havaOther {
+    height: 25vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.havaOther h3 {
+    width: 200px;
+    font-size: 35px;
+}
+
+.havaOther img {
+    width: 200px;
+}
+
+
+/*  DATE  */
+
+.dateMain {
+    width: 100%;
+    height: 25vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    font-family: 'Barlow', sans-serif;
+    z-index: 100;
+}
+
+
+.dateMain div {
+    display: block;
+}
+
+.mainDate {
+    font-size: 50px;
+}
+
+.mainDay {
+    font-size: 50px;
+}
+
+.mainHour {
+    font-size: 120px;
+}

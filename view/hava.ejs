@@ -2,18 +2,86 @@
 <html>
 
 <head>
-    <title>Hava Finans</title>
+    <title>Hava</title>
     <link rel="stylesheet" href="/stylesheets/bootstrap.css">
     <link href="https://fonts.googleapis.com/css?family=Barlow&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="stylesheet" href="/stylesheets/date.css">
-    <link rel="stylesheet" href="/stylesheets/havaFinans.css">
+    <link rel="stylesheet" href="/stylesheets/hava.css">
 </head>
 
 <body>
+
     <div class="row">
-        <div class="col-sm-8"></div>
-        <div class="col-sm-4"></div>
+        <div class="col-sm-8 main-weather">
+            <div class="main-header">
+
+                <div class="main-header-part">
+                    <div class="mainHour" id="clock"></div>
+                </div>
+
+                <div class="main-header-part">
+
+                    <div class="mainDay" id="day"></div>
+                    <div class="mainDate" id="date"></div>
+                </div>
+
+            </div>
+            <div class="main-body">
+                <div class="main-body-part">
+                    <img id="gif" src="<%= daysWeather.fiveDay[0].gif %>" alt="">
+                </div>
+                <div class="main-body-part">
+                    <h1><%= daysWeather.name %></h1>
+                    <h3><%= daysWeather.fiveDay[0].temp %> &#176;</h3>
+                    <h3><%= daysWeather.fiveDay[0].weather %></h3>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-sm-4 other-weather">
+            <ul>
+                <li class="havaOther">
+                    <h3><%= daysWeather.fiveDay[1].time %></h3>
+                    <img id="gif" src="<%= daysWeather.fiveDay[1].gif %>" alt="">
+                    <div class="havaContent">
+                        <h3><%= daysWeather.fiveDay[1].temp %> &#176;</h3>
+                        <h3><%= daysWeather.fiveDay[1].weather %></h3>
+                    </div>
+
+                </li>
+
+                <li class="havaOther">
+                    <h3><%= daysWeather.fiveDay[2].time %></h3>
+                    <img id="gif" src="<%= daysWeather.fiveDay[2].gif %>" alt="">
+                    <div class="havaContent">
+                        <h3><%= daysWeather.fiveDay[2].temp %> &#176;</h3>
+                        <h3><%= daysWeather.fiveDay[2].weather %></h3>
+                    </div>
+
+                </li>
+
+                <li class="havaOther">
+                    <h3><%= daysWeather.fiveDay[3].time %></h3>
+                    <img id="gif" src="<%= daysWeather.fiveDay[3].gif %>" alt="">
+                    <div class="havaContent">
+                        <h3><%= daysWeather.fiveDay[3].temp %> &#176;</h3>
+                        <h3><%= daysWeather.fiveDay[3].weather %></h3>
+                    </div>
+
+                </li>
+
+                <li class="havaOther">
+                    <h3><%= daysWeather.fiveDay[4].time %></h3>
+                    <img id="gif" src="<%= daysWeather.fiveDay[4].gif %>" alt="">
+                    <div class="havaContent">
+                        <h3><%= daysWeather.fiveDay[4].temp %> &#176;</h3>
+                        <h3><%= daysWeather.fiveDay[4].weather %></h3>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
     </div>
 
 
@@ -50,6 +118,7 @@
     <!-- Latest compiled JavaScript -->
     <script src="/javascripts/bootstrap.js"></script>
     <script src="/javascripts/hava.js"></script>
+    <script src="/javascripts/date.js"></script>
     <!--<script src="/javascripts/date.js"></script>-->
 </body>
 

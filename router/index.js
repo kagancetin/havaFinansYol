@@ -9,12 +9,21 @@ router.route('/')
 router.route('/hava')
     .get(controller.hava);
 
+router.route('/hava/:city')
+    .get(controller.havaCity);
+
 router.route('/finans')
     .get(controller.finans);
+
+router.route('/finansBlack')
+    .get(controller.finansBlack);
 
 
 router.route('/havafinans')
     .get(controller.havafinans);
+
+router.route('/havafinans/:city')
+    .get(controller.havafinansCity);
 
 router.route('/harita1')
     .get(controller.harita1);

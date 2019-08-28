@@ -70,7 +70,11 @@
 				</div>
 				<div><img class="icon-turn4" style='height:80px;margin-top:-7px;' src="/images/gold.jpg" alt=""> Altın
 					<span>
-						<strong class="<%-finans[3].status_bg_color %>"><%- finans[3].status_symbol %></strong>
+						<% if(finans[3].change_rate<0){%>
+						<strong class="red">&#9660</strong>
+						<% }else{%>
+						<strong class="green">&#9650</strong>
+						<% }%>
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<%- finans[3].selling.toString().substring(0, finans[3].selling.toString().length - 9) %> ₺
 					</span>

@@ -1,119 +1,124 @@
-body{
-    background-color:black;
-    color: #fff;
-	
+body {
+	background-color: black;
+	color: #fff;
+
 }
 
 
-.botMain{
-	 height: 70vh;
+.botMain {
+	height: 70vh;
 	display: flex;
-    justify-content: space-around;
+	justify-content: space-around;
 }
-.headerContent{
-	width:100%;
+
+.headerContent {
+	width: 100%;
 	display: flex;
-    align-items: center;
-    justify-content: center;
-	margin-bottom:50px;
-	z-index:100;
-	
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 50px;
+	z-index: 100;
+
 }
 
 .dateMain {
 	font-family: 'Barlow', sans-serif;
 }
 
-.headerContent h1{
+.headerContent h1 {
 	font-family: 'Barlow', sans-serif;
 	font-weight: bolder;
 	font-size: 55px;
 }
 
-.botbotMain{
-display: flex;
-    align-items: center;
-    justify-content: center;
+.botbotMain {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
-.havaMain{
-    width: 40vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Barlow', sans-serif !important;
+
+.havaMain {
+	width: 40vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Barlow', sans-serif !important;
 }
-.havaContent{
+
+.havaContent {
 	margin-top: -100px;
 	display: flex;
-    align-items: center;
-    justify-content: center;
+	align-items: center;
+	justify-content: center;
 	flex-direction: column;
 }
 
-.havaImgL{
-    height: 100%;
+.havaImgL {
+	height: 100%;
 }
 
-.havaImg{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.havaImg {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	flex-direction: column;
-	
+
 }
 
 .havaImg img {
-    height: 700px;
-    margin-top: -200px;
-    z-index: -1;
+	height: 700px;
+	margin-top: -200px;
+	z-index: -1;
 }
 
 .havaImgL h1 {
 	font-family: 'Barlow', sans-serif;
 	font-weight: bolder;
-    font-size:50px;
-    margin-bottom: 10px;
-	margin-top:-70px;
+	font-size: 50px;
+	margin-bottom: 10px;
+	margin-top: -70px;
 }
+
 .havaImgL h3 {
-    font-size:40px;
-    margin-bottom: 5px;
+	font-size: 40px;
+	margin-bottom: 5px;
 }
 
 
 
 /*     Finans      */
 
-.leftMain{
+.leftMain {
 	margin-left: -55px;
 }
 
-.financeMain{
-    width: 40vw;
-    display: flex;
-    flex-wrap: wrap;
-    font-size: 40px;
-    font-family: 'Barlow', sans-serif;
-    flex-direction: column;
+.financeMain {
+	width: 40vw;
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 40px;
+	font-family: 'Barlow', sans-serif;
+	flex-direction: column;
 }
 
 
 
-.financeMain div{
-    font-family: 'Barlow', sans-serif;
-    color: #fff;
+.financeMain div {
+	font-family: 'Barlow', sans-serif;
+	color: #fff;
 	font-size: 50px;
-	margin:30px;
+	margin: 30px;
 }
 
-.financeMain div img{
-	margin-right:30px;
+.financeMain div img {
+	margin-right: 30px;
 }
-.financeMain div span{
-	margin-left:50px;
-	width:300px;
-	float:right;
+
+.financeMain div span {
+	margin-left: 50px;
+	width: 300px;
+	float: right;
 	font-family: 'Barlow', sans-serif;
 }
 

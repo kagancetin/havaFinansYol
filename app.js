@@ -8,7 +8,7 @@ const app = express();
 
 
 global.havaData;
-global.finansDataSelling;
+global.finansData;
 
 const havaService = require("./helper/hava.js");
 const finansService = require("./helper/finans.js");
@@ -17,21 +17,23 @@ var getFinans = async function () {
 
     var a = await finansService.getFinansData((data) => {
         if (data != false) {
-            global.finansDataSelling = data;
+            console.log("finans bilgileri güncellendi");
+            global.finansData = data;
         }
     });
 }
 getFinans();
 var getHava = async function () {
-    console.log("hava_geldi");
+
     const data = havaService.havaDataForCity("Istanbul", g => {
+        console.log("havadurumu bilgileri güncellendi");
         global.havaData = g;
     });
 
 }
 getHava();
 var refrClock = setInterval(getHava, 1800000);
-var refrClock2 = setInterval(getFinans, 1800000);
+var refrClock2 = setInterval(getFinans, 300000);
 
 
 const index = require("./router/index.js");
