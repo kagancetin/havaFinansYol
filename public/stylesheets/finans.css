@@ -14,6 +14,11 @@ body {
 }
 
 
+.icon-turn {
+    margin-right: 30px;
+}
+
+
 .main-header {
     padding: 100px 50px 0px 50px;
     width: 100%;

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/stylesheets/hava.css">
 </head>
 
-<body>
+<body style="background-image: url('/images/sky2.png')">
 
     <div class="row">
         <div class="col-sm-8 main-weather">
@@ -27,6 +27,7 @@
 
             </div>
             <div class="main-body">
+
                 <div class="main-body-part">
                     <img id="gif" src="<%= daysWeather.fiveDay[0].gif %>" alt="">
                 </div>
@@ -84,33 +85,6 @@
         </div>
     </div>
 
-
-    <!-- Tarih Saat 
-    <div class="dateMain">
-        <div class="mainHour" id="clock"></div>
-        <div class="mainDay" id="day"></div>
-        <div class="mainDate" id="date"></div>
-    </div>
-    <div class="botMain">
-
-        <!-- HavaFinans Hava  
-        <div class="leftMain">
-            <div class="headerContent">
-                <h1>Hava Durumu</h1>
-            </div>
-            <!-- Hava  
-            <div class="havaMain">
-                <div class="havaImg havaImgL">
-                    <img id="gif" src="<%= daysWeather.fiveDay[0].gif %>" alt="">
-                    <div class="havaContent">
-                        <h1 id="name"><%= daysWeather.name %></h1>
-                        <h3 id="temp"><%= daysWeather.fiveDay[0].temp %></h3>
-                        <h3 id="weather"><%= daysWeather.fiveDay[0].weather %></h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    -->
 
     <script src="/javascripts/jquery.js"></script>
     <!-- Popper JS -->

@@ -65,11 +65,13 @@ var weatherSettings = (data) => {
 
     var weatherType = data.weather[0].icon.substring(0, 2);
 
-    let newDate = data.dt_txt.split('-')[2].substring(0, 2) + " " + monthFormat(data.dt_txt.split('-')[1]);
+    let day = parseInt(data.dt_txt.split('-')[2].substring(0, 2));
+
+    let newDate = day.toString() + " " + monthFormat(data.dt_txt.split('-')[1]);
     return {
         weather: turkishWeathers(parseInt(weatherType)),
         temp: parseInt(data.main.temp),
-        gif: "/images/animated/" + data.weather[0].icon + ".gif",
+        gif: "/images/animated/" + data.weather[0].icon + ".svg",
         time: newDate
     }
 }

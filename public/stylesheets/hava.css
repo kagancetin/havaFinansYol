@@ -1,16 +1,39 @@
+:root {
+    --mycolor: #040404;
+    --border-color: #a7a7f9;
+}
+
 html,
 body {
     height: 1080px;
     width: 1920px;
     margin: 0;
     padding: 0;
-    background-color: black;
     font-family: 'Barlow', sans-serif;
-    color: antiquewhite;
+    color: var(--mycolor);
+    font-weight: bold;
+
 }
 
+h1,
+h3 {
+    font-weight: bold;
+}
+
+
 .other-weather {
-    border-left: 2px solid #fdfdfd;
+    /*border-left: 2px solid var(--mycolor);*/
+    /*background-color: #44444478;
+    -webkit-box-shadow: -13px 0px 26px -9px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -13px 0px 26px -9px rgba(0, 0, 0, 0.75);
+    box-shadow: -13px 0px 26px -9px rgba(0, 0, 0, 0.75);*/
+}
+
+.main-weather {
+
+    -webkit-box-shadow: 14px 0px 26px -9px rgba(63, 63, 143, 0.75);
+    -moz-box-shadow: 14px 0px 26px -9px rgba(63, 63, 143, 0.75);
+    box-shadow: 14px 0px 26px -9px rgba(63, 63, 143, 0.75);
 }
 
 .main-header {
@@ -28,7 +51,7 @@ body {
 }
 
 .main-header-part h3 {
-    font-size: 70px;
+    font-size: 80px;
 }
 
 .main-body {
@@ -48,12 +71,12 @@ body {
 }
 
 .main-body-part h1 {
-    font-size: 60px;
+    font-size: 70px;
     margin: 40px;
 }
 
 .main-body-part h3 {
-    font-size: 50px;
+    font-size: 60px;
     margin: 40px;
 }
 
@@ -62,7 +85,8 @@ body {
     padding: 0;
 }
 
-.col-sm-8 {
+.col-sm-8,
+.col-sm-4 {
     margin: 0;
     padding: 0;
 }
@@ -80,16 +104,35 @@ ul {
     align-items: center;
     justify-content: center;
     text-align: center;
+
+    border-top: 1px solid var(--border-color);
+    /*
+    -webkit-box-shadow: 0px 17px 26px -9px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 17px 26px -9px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 17px 26px -9px rgba(0, 0, 0, 0.75);
+
+    -webkit-box-shadow: 0px -12px 26px -9px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px -12px 26px -9px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px -12px 26px -9px rgba(0, 0, 0, 0.75);
+    */
+
 }
+
+.havaOther:first-child {
+    border-top: none;
+}
+
+.havaOther:last-child {}
 
 .havaOther h3 {
     width: 200px;
-    font-size: 35px;
+    font-size: 45px;
 }
 
 .havaOther img {
     width: 200px;
 }
+
 
 
 /*  DATE  */
@@ -112,11 +155,11 @@ ul {
 }
 
 .mainDate {
-    font-size: 50px;
+    font-size: 60px;
 }
 
 .mainDay {
-    font-size: 50px;
+    font-size: 60px;
 }
 
 .mainHour {

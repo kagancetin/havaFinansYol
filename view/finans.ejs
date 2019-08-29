@@ -31,7 +31,7 @@
                         src="/images/usd.svg" alt="">
                     USD</span>
                 <span style="width:400px;">
-                    <%- finans[0].selling_str.toString().substring(0, 4) %> ₺
+                    <%- finans[0].selling_str.toString().substring(0, finans[0].selling.toString().length - 2) %> ₺
                 </span>
                 <span style="width:300px;">
                     <%- finans[0].change_rate_str %>
@@ -44,9 +44,9 @@
             <div class="finance-block">
                 <span style="width:600px;"> <img class="icon-turn" style='height:80px;margin-top:-7px;'
                         src="/images/eur.svg" alt="">
-                    USD</span>
+                    EUR</span>
                 <span style="width:400px;">
-                    <%- finans[1].selling_str.toString().substring(0, 4) %> ₺
+                    <%- finans[1].selling_str.toString().substring(0, finans[1].selling.toString().length - 2) %> ₺
                 </span>
                 <span style="width:300px;">
                     <%- finans[1].change_rate_str %>
@@ -61,7 +61,7 @@
                         src="/images/gbp.svg" alt="">
                     GBP</span>
                 <span style="width:400px;">
-                    <%- finans[2].selling_str.toString().substring(0, 4) %> ₺
+                    <%- finans[2].selling_str.toString().substring(0, finans[2].selling.toString().length - 2) %> ₺
                 </span>
                 <span style="width:300px;">
                     <%- finans[2].change_rate_str %>
@@ -74,9 +74,9 @@
             <div class="finance-block">
                 <span style="width:600px;"> <img class="icon-turn" style='height:80px;margin-top:-7px;'
                         src="/images/gold.jpg" alt="">
-                    GBP</span>
+                    Altın</span>
                 <span style="width:400px;">
-                    <%- finans[3].selling_str.toString().substring(0, 6) %> ₺
+                    <%- finans[3].selling_str.toString().substring(0, finans[3].selling.toString().length - 9) %> ₺
                 </span>
                 <span style="width:300px;">
                     <%- finans[3].change_rate_str %>
