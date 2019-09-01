@@ -30,12 +30,12 @@ function init() {
       // Custom image for the placemark icon.
       iconImageHref: "/images/konum.png",
       // The size of the placemark.
-      iconImageSize: [44, 108],
+      iconImageSize: [85, 116],
       /**
        * The offset of the upper left corner of the icon relative
        * to its "tail" (the anchor point).
        */
-      iconImageOffset: [-45, -72]
+      iconImageOffset: [-55, -105]
     }
   );
   myMap.geoObjects.add(myPlacemark);
