@@ -1,6 +1,6 @@
 :root {
     --mycolor: #040404;
-    --border-color: #a7a7f9;
+    --border-color: #3e3ed8;
 }
 
 html,
@@ -20,20 +20,11 @@ h3 {
     font-weight: bold;
 }
 
-
-.other-weather {
-    /*border-left: 2px solid var(--mycolor);*/
-    /*background-color: #44444478;
-    -webkit-box-shadow: -13px 0px 26px -9px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: -13px 0px 26px -9px rgba(0, 0, 0, 0.75);
-    box-shadow: -13px 0px 26px -9px rgba(0, 0, 0, 0.75);*/
-}
-
 .main-weather {
 
-    -webkit-box-shadow: 14px 0px 26px -9px rgba(63, 63, 143, 0.75);
-    -moz-box-shadow: 14px 0px 26px -9px rgba(63, 63, 143, 0.75);
-    box-shadow: 14px 0px 26px -9px rgba(63, 63, 143, 0.75);
+    -webkit-box-shadow: 14px 0px 26px -9px rgba(30, 30, 30, 0.75);
+    -moz-box-shadow: 14px 0px 26px -9px rgba(30, 30, 30, 0.75);
+    box-shadow: 14px 0px 26px -9px rgba(30, 30, 30, 0.75);
 }
 
 .main-header {

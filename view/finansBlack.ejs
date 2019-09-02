@@ -7,11 +7,11 @@
     <link href="https://fonts.googleapis.com/css?family=Barlow&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="stylesheet" href="/stylesheets/date.css">
-    <link rel="stylesheet" href="/stylesheets/finans.css">
+    <link rel="stylesheet" href="/stylesheets/finans2.css">
 </head>
 
-<body style="background-color: black !important;color: #fff !important; background-image: none; font-weight:inherit;">
-    <div class="financeMain" style="background-color: black;">
+<body>
+    <div class="financeMain">
         <div class="main-header">
 
             <div class="main-header-part">
@@ -27,14 +27,11 @@
         </div>
         <div class="main-body">
             <div class="finance-block">
-                <span style="width:600px;"> <img class="icon-turn" style='width:80px;margin-top:-7px;'
+                <span style="width:450px;"> <img class="icon-turn" style='width:80px;margin-top:-7px;'
                         src="/images/usd.svg" alt="">
                     USD</span>
-                <span style="width:400px;">
+                <span style="width:350px;">
                     <%- finans[0].selling_str.toString().substring(0, finans[0].selling.toString().length - 2) %> ₺
-                </span>
-                <span style="width:300px;">
-                    <%- finans[0].change_rate_str %>
                 </span>
                 <span>
                     <strong class="<%-finans[0].status_bg_color %>"><%- finans[0].status_symbol %></strong>
@@ -42,14 +39,11 @@
 
             </div>
             <div class="finance-block">
-                <span style="width:600px;"> <img class="icon-turn" style='width:80px;margin-top:-7px;'
+                <span style="width:450px;"> <img class="icon-turn" style='width:80px;margin-top:-7px;'
                         src="/images/eur.svg" alt="">
                     EUR</span>
-                <span style="width:400px;">
+                <span style="width:350px;">
                     <%- finans[1].selling_str.toString().substring(0, finans[1].selling.toString().length - 2) %> ₺
-                </span>
-                <span style="width:300px;">
-                    <%- finans[1].change_rate_str %>
                 </span>
                 <span>
                     <strong class="<%-finans[0].status_bg_color %>"><%- finans[1].status_symbol %></strong>
@@ -57,14 +51,11 @@
 
             </div>
             <div class="finance-block">
-                <span style="width:600px;"> <img class="icon-turn" style='width:80px;margin-top:-7px;'
+                <span style="width:450px;"> <img class="icon-turn" style='width:80px;margin-top:-7px;'
                         src="/images/gbp.svg" alt="">
                     GBP</span>
-                <span style="width:400px;">
+                <span style="width:350px;">
                     <%- finans[2].selling_str.toString().substring(0, finans[2].selling.toString().length - 2) %> ₺
-                </span>
-                <span style="width:300px;">
-                    <%- finans[2].change_rate_str %>
                 </span>
                 <span>
                     <strong class="<%-finans[0].status_bg_color %>"><%- finans[2].status_symbol %></strong>
@@ -72,14 +63,11 @@
 
             </div>
             <div class="finance-block">
-                <span style="width:600px;"> <img class="icon-turn" style='width:80px;margin-top:-7px;'
+                <span style="width:450px;"> <img class="icon-turn" style='width:80px;margin-top:-7px;'
                         src="/images/gold.jpg" alt="">
                     Altın</span>
-                <span style="width:400px;">
+                <span style="width:350px;">
                     <%- finans[3].selling_str.toString().substring(0, finans[3].selling.toString().length - 9) %> ₺
-                </span>
-                <span style="width:300px;">
-                    <%- finans[3].change_rate_str %>
                 </span>
                 <span>
                     <% if(finans[3].change_rate<0){%>

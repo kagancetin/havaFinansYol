@@ -1,14 +1,14 @@
 body {
-    background-image: url('/images/finans.jpg');
+    background-image: url('/images/finans2.jpg');
     font-family: 'Barlow', sans-serif;
-    color: #fff;
+    font-weight: bold;
 }
 
 .financeMain {
-    background-color: hsla(0, 0%, 0%, 0.4);
     z-index: 10;
-    width: 100vw;
+    width: 60vw;
     height: 100vh;
+    float: right;
 
 }
 
@@ -43,7 +43,7 @@ body {
 }
 
 .finance-block {
-    border-bottom: 3px solid #bbb;
+    border-bottom: 3px solid #000;
 }
 
 .main-body div span {
