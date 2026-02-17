@@ -1,35 +1,18 @@
-const express = require('express');
-const router = express.Router();
+import express from "express"
+const router = express.Router()
+import * as controller from "../controller/index.js"
 
-const controller = require("../controller/index.js");
+router.get("/", controller.index)
+router.get("/hava", controller.hava)
+router.get("/hava/:city", controller.havaCity)
+router.get("/finans", controller.finans)
+router.get("/finans2", controller.finans2)
+router.get("/finans3", controller.finans3)
+router.get("/finansBlack", controller.finansBlack)
+router.get("/havafinans", controller.havafinans)
+router.get("/havafinans/:city", controller.havafinansCity)
+router.get("/harita1", controller.harita1)
+router.get("/harita2", controller.harita2)
+router.get("/harita3", controller.harita3)
 
-router.route('/')
-    .get(controller.index);
-
-router.route('/hava')
-    .get(controller.hava);
-
-router.route('/hava/:city')
-    .get(controller.havaCity);
-
-router.route('/finans')
-    .get(controller.finans);
-
-router.route('/finansBlack')
-    .get(controller.finansBlack);
-
-
-router.route('/havafinans')
-    .get(controller.havafinans);
-
-router.route('/havafinans/:city')
-    .get(controller.havafinansCity);
-
-router.route('/harita1')
-    .get(controller.harita1);
-router.route('/harita2')
-    .get(controller.harita2);
-router.route('/harita3')
-    .get(controller.harita3);
-
-module.exports = router;
+export default router

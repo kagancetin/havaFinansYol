@@ -1,21 +1,26 @@
 {
   "name": "havafinansyol",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.1.0",
+  "description": "Modernize edilmiş hava durumu ve finans takip uygulaması",
   "main": "app.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "ejs": "^2.6.2",
-    "express": "^4.17.1",
-    "helmet": "^3.20.0",
-    "morgan": "^1.9.1",
+    "axios": "^1.6.0",
+    "cheerio": "^1.0.0",
+    "ejs": "^3.1.10",
+    "express": "^4.21.0",
+    "helmet": "^8.0.0",
+    "morgan": "^1.10.0",
+    "node-cron": "^4.2.1",
     "node-google-translate-skidz": "^1.1.2",
-    "request": "^2.88.0"
+    "puppeteer": "^24.36.1",
+    "yahoo-finance2": "^3.13.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
   }
 }

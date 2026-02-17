@@ -1,41 +1,99 @@
-const Request = require("request");
+import axios from "axios"
+import * as cheerio from "cheerio"
 
-var getFinansData = async function (callback) {
+const formatObject = (name, priceStr, changeStr, symbol) => {
+    // Çift gelme sorununa karşı sadece ilk parçayı al
+    const cleanChange = changeStr ? changeStr.trim().split(/\s+/)[0] : "%0,00"
+    // Sayı formatını bozma, sadece sembolleri temizle
+    const cleanPrice = priceStr ? priceStr.replace(/[^\d.,]/g, "").trim() : "0,00"
 
-    let finance;
-    let allCurrencies;
-    let allGolds;
-    let allCoins;
-    await Request.get("https://www.doviz.com", (error, response, body) => {
-        if (error) {
-            return console.log(error);
-        } else {
-
-            try {
-                all = body.match(/{.+}}/g);
-                allCurrencies = JSON.parse(all[0]);
-                allGolds = JSON.parse(all[1]);
-                allCoins = JSON.parse(all[2]);
-                var selling = [];
-                var buying = [];
-
-                selling[0] = allCurrencies["1"]; //dolar
-                selling[1] = allCurrencies["2"]; //euro
-                selling[2] = allCurrencies["3"]; //sterlin
-                selling[3] = allGolds["2"] //altın
-
-                callback(selling);
-            } catch (error) {
-                //log.save("doviz.com veri gelmedi (" + error + ")", "errGetFinans");
-                callback(false);
-            }
-        }
-    });
-
+    return {
+        name: name,
+        selling: `${cleanPrice} ${symbol}`,
+        change: cleanChange,
+        status_bg_color: cleanChange.includes("-") ? "red" : "green",
+        status_symbol: cleanChange.includes("-") ? "&#9660;" : "&#9650;"
+    }
 }
 
+export const getFinansData = async () => {
+    try {
+        // Cache engellemek için timestamp ekliyoruz
+        const freshUrl = `https://altin.doviz.com/?_t=${Date.now()}`
+        const headers = {
+            "User-Agent":
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "Cache-Control": "no-cache"
+        }
 
+        const { data: html } = await axios.get(freshUrl, { headers })
+        const $ = cheerio.load(html)
 
-module.exports = {
-    getFinansData: getFinansData
+        // --- 1. NAVBARDAN (Header) DÖVİZ, ENDEKS VE BITCOIN ---
+        const marketDataList = []
+        const marketHedefleri = [
+            { code: "USD", customName: "Dolar", sym: "TL" },
+            { code: "EUR", customName: "Euro", sym: "TL" },
+            { code: "GBP", customName: "Sterlin", sym: "TL" },
+            { code: "XU100", customName: "BIST 100", sym: "" },
+            { code: "d-bitcoin", customName: "Bitcoin", sym: "$" },
+            { code: "gumus", customName: "Gümüş", sym: "TL" }
+        ]
+
+        marketHedefleri.forEach(item => {
+            // Sadece .market-data (Navbar) içindeki item'ı bul
+            const container = $(`.market-data .item:has([data-socket-key="${item.code}"])`)
+            if (container.length) {
+                const price = container.find(`[data-socket-attr="s"]`).first().text().trim()
+                const change = container.find(`[data-socket-attr="c"]`).first().text().trim()
+                marketDataList.push(formatObject(item.customName, price, change, item.sym))
+            }
+        })
+
+        // --- 2. TABLODAN (#golds) ALTINLARI ÇEK (KESİN VERİ) ---
+        const altinListesi = []
+        const altinHedefleri = [
+            { id: "ons", customName: "Ons Altın", sym: "$" },
+            { id: "gram-altin", customName: "Gram Altın", sym: "TL" }
+        ]
+
+        altinHedefleri.forEach(gold => {
+            // tr:has yerine doğrudan tablo ID'si üzerinden gidip
+            // o ID'ye sahip TD hücresini buluyoruz
+            const priceCell = $(
+                `table#golds td[data-socket-key="${gold.id}"][data-socket-attr="ask"]`
+            )
+            const changeCell = $(
+                `table#golds td[data-socket-key="${gold.id}"][data-socket-attr="c"]`
+            )
+
+            if (priceCell.length) {
+                const price = priceCell.text().trim()
+                const change = changeCell.text().trim()
+
+                // Konsolda kontrol edelim, tablo içinden mi geliyor?
+                console.log(`${gold.customName} Tablo Verisi:`, price, change)
+
+                altinListesi.push(formatObject(gold.customName, price, change, gold.sym))
+            }
+        })
+
+        const finans = [...marketDataList, ...altinListesi]
+        console.log("finans", finans)
+        const orderList = [
+            "Dolar",
+            "Euro",
+            "Sterlin",
+            "Ons Altın",
+            "Gram Altın",
+            "Gümüş",
+            "BIST 100",
+            "Bitcoin"
+        ]
+        finans.sort((a, b) => orderList.indexOf(a.name) - orderList.indexOf(b.name))
+        return finans
+    } catch (error) {
+        console.error("Hata:", error.message)
+        return []
+    }
 }

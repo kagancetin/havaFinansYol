@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hava Finans - FHD Dashboard</title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css" />
+    <style>
+        /* FHD Sınırlarını Koruyan ve Glassmorphism İçeren Tasarım */
+        body {
+            /* Arka plan görseli buraya gelecek */
+            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), 
+                        url('/images/finansyeni.jpg') no-repeat center center fixed; 
+            background-size: cover;
+            color: #f8fafc;
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden; 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            padding: 40px 60px;
+        }
+
+        .financeMain {
+            max-width: 1800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Header: Üst kısmı biraz daha şeffaf yaptık */
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 20px;
+        }
+
+        .mainHour {
+            font-size: 110px;
+            font-weight: 800;
+            line-height: 1;
+            color: #fff;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        .mainDay { font-size: 40px; font-weight: 600; color: #38bdf8; text-align: right; }
+        .mainDate { font-size: 28px; color: #cbd5e1; text-align: right; }
+
+        /* Grid Sistemi */
+        .main-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+        }
+        .main-body-items{
+          width: 100%;
+          display: grid;
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 25px;
+        }
+
+        /* Cam Efekti Verilen Kutular (Glassmorphism) */
+        .finance-block { 
+            display: flex; 
+            align-items: center; 
+            /* Şeffaf arka plan ve bulanıklık efekti */
+            background: rgba(255, 255, 255, 0.05); 
+            backdrop-filter: blur(5px); 
+            -webkit-backdrop-filter: blur(5px); 
+            
+            padding: 25px 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .asset-name-label {
+            font-size: 32px;
+            font-weight: 700;
+            color: #fff;
+            flex: 0 0 250px;
+        }
+
+        .price-text {
+            font-size: 40px;
+            font-weight: 800;
+            flex: 1;
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+            padding-right: 20px;
+        }
+
+        .change-text {
+            font-size: 26px;
+            flex: 0 0 130px;
+            text-align: right;
+            font-weight: 600;
+        }
+
+        .status-box {
+            font-size: 32px;
+            flex: 0 0 60px;
+            text-align: right;
+        }
+
+        /* Renkler: Parlaklıklarını artırdık ki cam üzerinde okunsun */
+        .red { color: #ff5f5f; text-shadow: 0 0 10px rgba(255, 95, 95, 0.3); } 
+        .green { color: #4ade80; text-shadow: 0 0 10px rgba(74, 222, 128, 0.3); }
+    </style>
+</head>
+
+<body>
+    <div class="financeMain">
+        <div class="main-header">
+            <div>
+                <div class="mainHour" id="clock">
+                    <%= time.hour %>:<%= time.minutes %>
+                </div>
+            </div>
+            <div>
+                <div class="mainDay"><%= time.dayName %></div>
+                <div class="mainDate"><%= time.day %> <%= time.month %> <%= time.year %></div>
+            </div>
+        </div>
+
+        <div class="main-body">
+          <div class="main-body-items">
+            <% if (finans && finans.length > 0) { %>
+                <% finans.forEach(function(item) { %>
+                    <div class="finance-block">
+                        <span class="asset-name-label"><%= item.name %></span>
+                        
+                        <span class="price-text">
+                            <%= item.selling %>
+                        </span>
+
+                        <span class="change-text <%= item.status_bg_color %>">
+                            <%= item.change %>
+                        </span>
+
+                        <span class="status-box">
+                            <strong class="<%= item.status_bg_color %>">
+                                <%- item.status_symbol %>
+                            </strong>
+                        </span>
+                    </div>
+                <% }); %>
+            <% } %>
+        </div>
+        </div>
+    </div>
+
+    <script>
+        setInterval(() => {
+            const now = new Date();
+            document.getElementById('clock').innerText = 
+                now.getHours().toString().padStart(2, '0') + ":" + 
+                now.getMinutes().toString().padStart(2, '0');
+        }, 1000);
+    </script>
+</body>
+</html>

@@ -1,87 +1,91 @@
-const express = require("express");
-const path = require("path");
-const logger = require("morgan");
-const bodyParser = require("body-parser");
-const helmet = require("helmet");
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import morgan from 'morgan';
+import helmet from 'helmet';
+import cron from 'node-cron';
+
+import indexRouter from './router/index.js';
+import { havaDataForCity } from './helper/hava.js';
+import { getFinansData } from './helper/finans.js';
+
+
+// ES Modules için __dirname alternatifi
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 
+// --- Veri Yönetimi (Cache) ---
+app.locals.havaData = null;
+app.locals.finansData = null;
 
-global.havaData;
-global.finansData;
+const refreshData = async () => {
+    try {
+        const [hava, finans] = await Promise.all([
+            havaDataForCity("Istanbul"),
+            getFinansData()
+        ]);
+        
+        if (hava) app.locals.havaData = hava;
+        if (finans) app.locals.finansData = finans;
+        console.log(`✅ [CRON] Veriler güncellendi: ${new Date().toLocaleTimeString()}`);
+    } catch (err) {
+        console.error("❌ [CRON] Hata:", err.message);
+    }
+};
 
-const havaService = require("./helper/hava.js");
-const finansService = require("./helper/finans.js");
-
-var getFinans = async function () {
-
-    var a = await finansService.getFinansData((data) => {
-        if (data != false) {
-            console.log("finans bilgileri güncellendi");
-            global.finansData = data;
-        }
+// 1. Finans Verisi: Her 5 dakikada bir çalıştır
+cron.schedule('*/5 * * * *', () => {
+    console.log('--- Finans güncelleniyor ---');
+    getFinansData().then(data => {
+        if(data) app.locals.finansData = data;
     });
-}
-getFinans();
-var getHava = async function () {
+});
 
-    const data = havaService.havaDataForCity("Istanbul", g => {
-        console.log("havadurumu bilgileri güncellendi");
-        global.havaData = g;
+// 2. Hava Durumu: Her 30 dakikada bir çalıştır
+cron.schedule('*/30 * * * *', () => {
+    console.log('--- Hava durumu güncelleniyor ---');
+    havaDataForCity("Istanbul").then(data => {
+        if(data) app.locals.havaData = data;
     });
-
-}
-getHava();
-var refrClock = setInterval(getHava, 1800000);
-var refrClock2 = setInterval(getFinans, 300000);
+});
 
 
-const index = require("./router/index.js");
+refreshData();
 
-//? Middleware'lerimiz
-app.use(helmet());
-app.set('views', path.join(__dirname, '/view'));
-app.set("view engine", "ejs");
-app.use(express.static("public"));
-app.use(
-    bodyParser.urlencoded({
-        extended: true
-    })
-);
-app.use(bodyParser.json());
-app.disable("etag");
+app.use(helmet({
+    contentSecurityPolicy: false, 
+}));
+app.use(morgan('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(logger("dev"));
+app.set('views', path.join(__dirname, 'view'));
+app.set('view engine', 'ejs');
+app.disable('etag');
 
-//? Router'larımız
-app.use("/", index);
+app.use('/', indexRouter);
 
-
-//Catch 404 errors and forward them to error handler
 app.use((req, res, next) => {
-    const err = new Error("Not Found");
+    const err = new Error('Sayfa Bulunamadı');
     err.status = 404;
     next(err);
 });
 
-//Error handler function
 app.use((err, req, res, next) => {
-    const error = app.get("env") === "development" ? err : {};
+    const isDev = app.get('env') === 'development';
     const status = err.status || 500;
 
-    //Respond to client
     res.status(status).json({
         error: {
-            message: error.message
+            message: isDev ? err.message : "Sistem hatası oluştu",
         }
     });
-
-    //Respond to ourselves
     console.error(err);
 });
 
-
-const port = app.get("port") || 3000;
-app.listen(port, () => {
-    console.log("Server is running on " + port + " port!");
-})
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+    console.log(`🚀 Sunucu ${PORT} portunda hazır! (Mod: ${app.get('env')})`);
+});
