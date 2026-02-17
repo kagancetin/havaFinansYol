@@ -7,7 +7,6 @@ export const index = async (req, res, next) => {
 }
 
 export const hava = async (req, res, next) => {
-    console.log(req.app.locals.havaData)
     res.render("hava", {
         // app.js'te app.locals'a bağladığımız veriyi req.app.locals üzerinden çekiyoruz
         daysWeather: req.app.locals.havaData,

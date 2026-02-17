@@ -1,5 +1,6 @@
 import axios from "axios"
 import * as cheerio from "cheerio"
+import "dotenv/config"
 
 const formatObject = (name, priceStr, changeStr, symbol) => {
     // Çift gelme sorununa karşı sadece ilk parçayı al
@@ -58,8 +59,6 @@ export const getFinansData = async () => {
         ]
 
         altinHedefleri.forEach(gold => {
-            // tr:has yerine doğrudan tablo ID'si üzerinden gidip
-            // o ID'ye sahip TD hücresini buluyoruz
             const priceCell = $(
                 `table#golds td[data-socket-key="${gold.id}"][data-socket-attr="ask"]`
             )
@@ -70,16 +69,11 @@ export const getFinansData = async () => {
             if (priceCell.length) {
                 const price = priceCell.text().trim()
                 const change = changeCell.text().trim()
-
-                // Konsolda kontrol edelim, tablo içinden mi geliyor?
-                console.log(`${gold.customName} Tablo Verisi:`, price, change)
-
                 altinListesi.push(formatObject(gold.customName, price, change, gold.sym))
             }
         })
 
         const finans = [...marketDataList, ...altinListesi]
-        console.log("finans", finans)
         const orderList = [
             "Dolar",
             "Euro",
