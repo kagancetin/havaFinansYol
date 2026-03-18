@@ -1,5 +1,8 @@
 import axios from "axios"
-import translate from "node-google-translate-skidz"
+import translate from "translate"
+
+// Çeviri motorunu Google olarak ayarlıyoruz (varsayılan budur ama garantiye alalım)
+translate.engine = "google"
 
 const weatherSettings = data => {
     let weatherType = data.weather[0].icon.substring(0, 2)
@@ -21,6 +24,7 @@ const weatherSettings = data => {
     const dateParts = data.dt_txt.split(" ")[0].split("-") // ["2026", "01", "29"]
     const day = dateParts[2]
     const month = months[parseInt(dateParts[1]) - 1]
+
     return {
         weather: turkishWeathers(parseInt(weatherType)),
         temp: Math.round(data.main.temp),
@@ -51,13 +55,12 @@ export const havaDataForCity = async city => {
         let cityTurkish = cityQuery
         const apiKey = process.env.WEATHER_API_KEY
 
-        // Çeviri işlemi
+        // YENİ VE TEMİZ ÇEVİRİ İŞLEMİ
         if (city) {
-            const res = await new Promise(resolve => {
-                translate({ text: city.replace(/\+/g, " "), source: "en", target: "tr" }, resolve)
-            })
-            cityTurkish = res.translation
+            const cleanCityName = city.replace(/\+/g, " ")
+            cityTurkish = await translate(cleanCityName, { from: "en", to: "tr" })
         }
+
         const url = `http://api.openweathermap.org/data/2.5/forecast?q=${cityQuery}&appid=${apiKey}&lang=tr&units=metric`
         const { data } = await axios.get(url)
 

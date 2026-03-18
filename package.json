@@ -1,27 +1,30 @@
 {
-  "name": "havafinansyol",
-  "version": "1.1.0",
-  "description": "Modernize edilmiş hava durumu ve finans takip uygulaması",
-  "main": "app.js",
-  "type": "module",
-  "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
-  },
-  "dependencies": {
-    "axios": "^1.6.0",
-    "cheerio": "^1.0.0",
-    "dotenv": "^17.3.1",
-    "ejs": "^3.1.10",
-    "express": "^4.21.0",
-    "helmet": "^8.0.0",
-    "morgan": "^1.10.0",
-    "node-cron": "^4.2.1",
-    "node-google-translate-skidz": "^1.1.2",
-    "puppeteer": "^24.36.1",
-    "yahoo-finance2": "^3.13.0"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.0"
-  }
+    "name": "havafinansyol",
+    "version": "1.1.0",
+    "description": "Modernize edilmiş hava durumu ve finans takip uygulaması",
+    "main": "app.js",
+    "type": "module",
+    "scripts": {
+        "start": "node app.js",
+        "dev": "nodemon app.js"
+    },
+    "dependencies": {
+        "axios": "^1.6.0",
+        "cheerio": "^1.0.0",
+        "dotenv": "^17.3.1",
+        "ejs": "^3.1.10",
+        "express": "^4.21.0",
+        "helmet": "^8.0.0",
+        "morgan": "^1.10.0",
+        "node-cron": "^4.2.1",
+        "puppeteer": "^24.36.1",
+        "translate": "^3.0.1",
+        "yahoo-finance2": "^3.13.0"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.0"
+    },
+    "overrides": {
+        "basic-ftp": "^5.2.1"
+    }
 }
